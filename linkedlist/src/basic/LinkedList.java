@@ -61,6 +61,42 @@ public class LinkedList {
         return linkedList;
     }
 
+    public LinkedList insertAtHead(LinkedList linkedList, int val) {
+
+        Node node = new Node(val);
+        node.next = linkedList.head;
+        linkedList.head = node;
+        return linkedList;
+    }
+
+    public LinkedList insertAtKPosition(LinkedList linkedList, int val, int pos) {
+        int count = 1;
+        Node currentNode = linkedList.head;
+        Node previousNode = null;
+        if(count == pos){
+            Node node = new Node(val);
+            node.next = linkedList.head;
+            linkedList.head = node;
+        }
+
+        while(pos != count && currentNode.next != null){
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+            count+=1;
+        }
+
+        if (pos == count){
+            Node node = new Node(val);
+            previousNode.next = node;
+            node.next = currentNode;
+            System.out.println("This "+pos+ " position inserted new node");
+        }else {
+            System.out.println(pos+" greater that existing LL length");
+        }
+
+        return linkedList;
+    }
+
     static class Node {
         int val;
         Node next;
@@ -84,6 +120,8 @@ public class LinkedList {
         }
         return linkedList;
     }
+
+
 
 
     public void traverse(LinkedList list){

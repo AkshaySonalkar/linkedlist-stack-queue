@@ -26,6 +26,14 @@ public class TraverseLL {
         System.out.println("LinkedList delete 1000");
         linkedList.deleteByKey(linkedList,1000);
 
+        linkedList.insertAtHead(linkedList, 1000);
+        System.out.println("LinkedList traversal elements:- ");
+        linkedList.traverse(linkedList);
+
+        linkedList.insertAtKPosition(linkedList, 900, 3);
+        System.out.println("LinkedList traversal elements:- ");
+        linkedList.traverse(linkedList);
+
         System.out.println("Is cycle detected:- "+linkedList.detectCycle(linkedList));
 
         System.out.println("LinkedList cycle created:- ");
