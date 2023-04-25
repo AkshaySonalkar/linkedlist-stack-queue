@@ -45,8 +45,12 @@ public class LinkedListBasicOps {
         System.out.println("LinkedList traversal elements after reverse using recursion:- ");
         linkedList.traverse(newLikedList1);
 
+        LinkedList.Node head = linkedList.reverseLLUsingIterative(newLikedList1.head);
+        System.out.println("LinkedList traversal elements after reverse using iterative:- ");
+        linkedList.traverse(head);
+
         System.out.println("LinkedList cycle created:- ");
-        newLikedList1.head.next.next = newLikedList1.head;
+        newLikedList1.head.next = newLikedList1.head;
 
         System.out.println("Is cycle detected:- "+linkedList.detectCycle(newLikedList1));
     }

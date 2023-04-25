@@ -6,6 +6,16 @@ public class LinkedList {
 
     Node head;
 
+    static class Node {
+        int val;
+        Node next;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+
     public boolean detectCycle(LinkedList linkedList) {
         Node slow = linkedList.head;
         Node fast = linkedList.head;
@@ -144,16 +154,20 @@ public class LinkedList {
         return newHead;
     }
 
-    static class Node {
-        int val;
-        Node next;
-
-        public Node(int val) {
-            this.val = val;
-            this.next = null;
+    Node reverseLLUsingIterative(Node node)
+    {
+        Node prev = null;
+        Node current = node;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
+        node = prev;
+        return node;
     }
-
     public LinkedList insert(LinkedList linkedList,int data){
         Node node = new Node(data);
         if(linkedList.head == null){
@@ -174,6 +188,19 @@ public class LinkedList {
     public void traverse(LinkedList list){
 
         Node head = list.head;
+
+        while(head.next != null){
+            System.out.println("Element :"+head.val);
+            head = head.next;
+        }
+
+        System.out.println("Element :"+head.val);
+
+    }
+
+    public void traverse(Node node){
+
+        Node head = node;
 
         while(head.next != null){
             System.out.println("Element :"+head.val);
