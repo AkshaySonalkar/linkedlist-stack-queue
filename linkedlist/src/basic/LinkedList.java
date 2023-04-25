@@ -4,6 +4,33 @@ public class LinkedList {
 
     Node head;
 
+    public boolean detectCycle(LinkedList linkedList) {
+        Node slow = linkedList.head;
+        Node fast = linkedList.head;
+
+        while(slow != null && fast !=null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int calculateLLLength(LinkedList linkedList) {
+        Node head = linkedList.head;
+        int count = 1;
+        while (head.next != null) {
+            count+=1;
+            head = head.next;
+        }
+
+        return count;
+    }
+
     static class Node {
         int val;
         Node next;
@@ -27,6 +54,7 @@ public class LinkedList {
         }
         return linkedList;
     }
+
 
     public void traverse(LinkedList list){
 
