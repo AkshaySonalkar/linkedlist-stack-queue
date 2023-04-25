@@ -1,6 +1,6 @@
 package basic;
 
-public class TraverseLL {
+public class LinkedListBasicOps {
 
     public static void main(String[] args) {
 
@@ -15,6 +15,10 @@ public class TraverseLL {
 
         System.out.println("LinkedList traversal elements:- ");
         linkedList.traverse(linkedList);
+
+        LinkedList newLikedList = linkedList.reverseLLUsingStack(linkedList);
+        System.out.println("LinkedList traversal elements after reverse using stack:- ");
+        linkedList.traverse(newLikedList);
 
         System.out.println("LinkedList delete 300");
         linkedList.deleteByKey(linkedList,300);
@@ -34,11 +38,16 @@ public class TraverseLL {
         System.out.println("LinkedList traversal elements:- ");
         linkedList.traverse(linkedList);
 
+
         System.out.println("Is cycle detected:- "+linkedList.detectCycle(linkedList));
+
+        LinkedList newLikedList1 = linkedList.reverseLLUsingRecursion(linkedList);
+        System.out.println("LinkedList traversal elements after reverse using recursion:- ");
+        linkedList.traverse(newLikedList1);
 
         System.out.println("LinkedList cycle created:- ");
-        linkedList.head.next.next.next.next = linkedList.head;
+        newLikedList1.head.next.next = newLikedList1.head;
 
-        System.out.println("Is cycle detected:- "+linkedList.detectCycle(linkedList));
+        System.out.println("Is cycle detected:- "+linkedList.detectCycle(newLikedList1));
     }
 }

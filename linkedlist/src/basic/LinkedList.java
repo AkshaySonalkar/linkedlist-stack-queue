@@ -1,5 +1,7 @@
 package basic;
 
+import java.util.Stack;
+
 public class LinkedList {
 
     Node head;
@@ -89,12 +91,57 @@ public class LinkedList {
             Node node = new Node(val);
             previousNode.next = node;
             node.next = currentNode;
-            System.out.println("This "+pos+ " position inserted new node");
+            System.out.println("At "+pos+ " position inserted new node");
         }else {
             System.out.println(pos+" greater that existing LL length");
         }
 
         return linkedList;
+    }
+
+    public LinkedList reverseLLUsingStack(LinkedList linkedList) {
+
+        Stack<Integer> stack = new Stack<>();
+        Node currentNode = linkedList.head;
+        while(currentNode.next != null){
+            stack.push(currentNode.val);
+            currentNode = currentNode.next;
+        }
+        stack.push(currentNode.val);
+
+        LinkedList newLinkdedList = new LinkedList();
+
+        while(!stack.isEmpty()){
+            int val = stack.pop();
+            Node node1 = new Node(val);
+            if(newLinkdedList.head == null){
+                newLinkdedList.head = node1;
+            }else{
+                Node newCurrentNode = newLinkdedList.head;
+                while(newCurrentNode.next != null){
+                    newCurrentNode = newCurrentNode.next;
+                }
+                newCurrentNode.next = node1;
+            }
+        }
+
+        return newLinkdedList;
+    }
+
+    public LinkedList reverseLLUsingRecursion(LinkedList linkedList) {
+        LinkedList newLinkedList = new LinkedList();
+        Node head = linkedList.head;
+        newLinkedList.head = reverseLL(head);
+        return newLinkedList;
+    }
+
+    private Node reverseLL(Node head) {
+        if(head == null) return null;
+        if(head.next == null) return head;
+        Node newHead = reverseLL(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
     }
 
     static class Node {
@@ -136,4 +183,6 @@ public class LinkedList {
         System.out.println("Element :"+head.val);
 
     }
+
+
 }
