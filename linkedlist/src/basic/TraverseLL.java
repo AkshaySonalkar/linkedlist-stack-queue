@@ -11,15 +11,25 @@ public class TraverseLL {
         linkedList.insert(linkedList,400);
         linkedList.insert(linkedList, 500);
 
+        System.out.println("LinkedList length:- "+linkedList.calculateLLLength(linkedList));
+
         System.out.println("LinkedList traversal elements:- ");
         linkedList.traverse(linkedList);
 
+        System.out.println("LinkedList delete 300");
+        linkedList.deleteByKey(linkedList,300);
+
         System.out.println("LinkedList length:- "+linkedList.calculateLLLength(linkedList));
+        System.out.println("LinkedList traversal elements:- ");
+        linkedList.traverse(linkedList);
+
+        System.out.println("LinkedList delete 1000");
+        linkedList.deleteByKey(linkedList,1000);
 
         System.out.println("Is cycle detected:- "+linkedList.detectCycle(linkedList));
 
         System.out.println("LinkedList cycle created:- ");
-        linkedList.head.next.next.next.next.next = linkedList.head;
+        linkedList.head.next.next.next.next = linkedList.head;
 
         System.out.println("Is cycle detected:- "+linkedList.detectCycle(linkedList));
     }
